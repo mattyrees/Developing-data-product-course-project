@@ -9,12 +9,14 @@ runtime: shiny
 
 ```{r, echo=FALSE}
 library(shiny)
-shinyUI(pageWithSidebar(
+shinyUI(
+  pageWithSidebar(
         headerPanel("Degrees Farenheit to Celsius Converter"),
+        
         sidebarPanel(
-                numericInput("DegFar", label="Degrees Farenheit", value= 0,min=-500),
-                numericInput("DegCel", label="Degrees Celsius", value= 0,min=-500),
-                actionButton("goButton", "Go!")),  
+                numericInput("DegFar", label="Degrees Farenheit", 0, min=-500, max = 500, step = 1),
+                numericInput("DegCel", label="Degrees Celsius", 0, min=-500, max = 500, step = 1),
+                submitButton("Submit")),  
         
         mainPanel(
                 tabsetPanel(

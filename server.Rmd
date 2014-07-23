@@ -5,14 +5,13 @@ date: "23 July 2014"
 output: html_document
 runtime: shiny
 ---
-
+```{r, echo=FALSE}
 library(shiny)
 shinyServer(function(input,output){
 output$inputtempfar<-renderPrint({input$DegFar})
 output$inputtempcel <- renderPrint({input$DegCel})
 output$resultfar <- renderPrint({(input$DegCel * (9/5)) + 32})
 output$resultcel <- renderPrint({(input$DegFar - 32) * (5/9)})
-  output$plot<- renderPlot({
-  (input$DegFar - 32) * (5/9)
-  })
-   
+  output$plot<- renderPlot({(input$DegFar - 32) * (5/9)})
+})
+```
