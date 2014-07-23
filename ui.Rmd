@@ -1,0 +1,33 @@
+---
+title: "Developing Data Products - Celsius to Faranheit"
+author: "Matthew Rees"
+date: "23 July 2014"
+output: html_document
+runtime: shiny
+---
+
+
+```{r, echo=FALSE}
+library(shiny)
+shinyUI(pageWithSidebar(
+        headerPanel("Degrees Farenheit to Celsius Converter"),
+        sidebarPanel(
+                numericInput("DegFar", label="Degrees Farenheit", value= 0,min=-500),
+                numericInput("DegCel", label="Degrees Celsius", value= 0,min=-500),
+                actionButton("goButton", "Go!")),  
+        
+        mainPanel(
+                tabsetPanel(
+      tabPanel(
+        h4("Results"), 
+        p("Entered Farenheit"),verbatimTextOutput("inputtempfar"),
+        p("Entered Celsius"), verbatimTextOutput("inputtempcel"), 
+        p("Calculated temperature Farenheit"), verbatimTextOutput("resultfar"),
+        p("Calculated temperature Celsius"), verbatimTextOutput("resultcel")),
+      tabPanel("Plot",plotOutput("plot"))
+    )
+  )
+))
+```
+
+
